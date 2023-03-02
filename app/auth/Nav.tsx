@@ -19,6 +19,7 @@ const Nav = async () => {
                 {<CommonNavLinks/>}
                 {!session?.user && <Login/>}
                 {session?.user && <Logged image = {session.user?.image || ""}/>}
+                
             </ul>
         </nav>
     )
