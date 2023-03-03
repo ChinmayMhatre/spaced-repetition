@@ -4,7 +4,6 @@ import Login from './Login'
 import {getServerSession} from "next-auth"
 import { authOptions } from '../../pages/api/auth/[...nextauth]'
 import Logged from './Logged'
-import CommonNavLinks from '@/components/CommonNavLinks'
 
 const Nav = async () => {
     const session = await getServerSession(authOptions)
@@ -16,7 +15,6 @@ const Nav = async () => {
                 <h1 className='font-bold text-lg'>Send it</h1>
             </Link>
             <ul className='flex items-center gap-6'>
-                {<CommonNavLinks/>}
                 {!session?.user && <Login/>}
                 {session?.user && <Logged image = {session.user?.image || ""}/>}
                 

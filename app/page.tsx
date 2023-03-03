@@ -1,10 +1,10 @@
 "use client"
 
 import Post from "./Post"
-import AddPost from "./AddPost"
 import { useQuery } from "react-query"
 import axios from "axios"
 import { PostsType } from "./types/Posts"
+import AddGroup from "./AddGroup"
 
 //Fetch All posts
 const allPosts = async () => {
@@ -22,7 +22,7 @@ export default function Home() {
 
   return (
     <div>
-      <AddPost />
+      <AddGroup />
       {data?.map((post) => (
         <Post
           key={post.id}

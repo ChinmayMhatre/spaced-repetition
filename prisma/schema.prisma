@@ -33,6 +33,21 @@ model Post {
   hearts    Heart[]
 }
 
+model Word {
+  id          String    @id @default(cuid())
+  word        String
+  audio       String?
+  definitions String[]
+  groupId     String
+  group       Group @relation(fields: [groupId], references: [id], onDelete: Cascade)
+}
+
+model Group {
+  id          String     @id @default(cuid())
+  name        String
+  words       Word[]    
+}
+
 model Heart {
   id     String @id @default(cuid())
   postId String
