@@ -8,13 +8,14 @@ export default async function handler(
     ) {
     if (req.method === "GET") {
         try {
-            const data = await prisma.group.findMany({
+            const data = await prisma.group.findUnique({
+                where:{
+                    id: req.query.details,
+                },
                 include:{
                     words:true
                 }
             })
-            console.log(data);
-            
             return res.status(200).json(data)
         } catch (err) {
             res.status(403).json({ err: err.message })
